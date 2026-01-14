@@ -1,0 +1,36 @@
+import { content } from "../data/content";
+
+const Testimonials = () => {
+  return (
+    <section id="testimonials" className="section-dark py-section">
+      <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
+        <div className="text-center">
+          <p className="text-small uppercase tracking-[0.2em] text-muted">
+            {content.testimonials.eyebrow}
+          </p>
+          <h2 className="mt-3 font-display text-headline text-text">
+            {content.testimonials.title}
+          </h2>
+        </div>
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          {content.testimonials.items.map((testimonial) => (
+            <figure key={testimonial.name} className="card">
+              <blockquote className="text-body text-text">
+                "{testimonial.quote}"
+              </blockquote>
+              <figcaption className="mt-4 text-small text-muted">
+                <span className="font-semibold text-text">
+                  {testimonial.name}
+                </span>
+                <span className="block">{testimonial.role}</span>
+                <span className="block">{testimonial.location}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Testimonials;
