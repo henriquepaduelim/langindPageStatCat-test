@@ -72,6 +72,11 @@ const ReportCardBadge = ({ photoSrc, photoAlt }: ReportCardBadgeProps) => {
                 src={photoSrc}
                 alt={photoAlt}
                 className="h-full w-full object-cover"
+                width={1400}
+                height={1377}
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
               />
             </div>
           </div>

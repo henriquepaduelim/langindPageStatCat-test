@@ -41,7 +41,7 @@ export const content = {
       label: "StatCat club app",
       tag: "App Preview",
       video: {
-        src: "/media/profile.photo.png",
+        src: "/media/profile.photo-1400.jpg",
         label: "Athlete report card photo",
       },
       cards: ["Development", "Report Cards", "Scheduling"],

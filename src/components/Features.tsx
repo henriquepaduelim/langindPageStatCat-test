@@ -45,7 +45,7 @@ const Features = () => {
                 muted
                 loop
                 playsInline
-                preload="metadata"
+                preload="none"
                 aria-label={content.features.highlight.video.ariaLabel}
               />
             </div>

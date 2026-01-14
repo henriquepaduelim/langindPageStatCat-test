@@ -4,7 +4,7 @@
 
 :root {
   --color-primary: 18 126 160;
-  --color-secondary: 18 163 108;
+  --color-secondary: 255 209 102;
   --color-accent: 229 158 54;
   --color-bg: 245 247 249;
   --color-surface: 255 255 255;
@@ -26,7 +26,7 @@
   --radius-lg: 20px;
   --radius-xl: 28px;
   --radius-pill: 999px;
-  --shadow-soft: 0 18px 40px -28px rgb(6 12 28 / 0.25);
+  --shadow-soft: 0 18px 40px -28px rgba(8, 28, 6, 0.25);
   --shadow-strong: 0 32px 70px -36px rgb(6 12 28 / 0.45);
   --container-sm: 36rem;
   --container-md: 48rem;
@@ -101,6 +101,7 @@ section {
     --color-text: var(--section-dark-text);
     --color-muted: var(--section-dark-muted);
     --color-border: var(--section-dark-border);
+    --color-secondary: 155 197 61;
   }
 
   .section-light {
@@ -113,6 +114,7 @@ section {
     --color-text: var(--section-light-text);
     --color-muted: var(--section-light-muted);
     --color-border: var(--section-light-border);
+    --color-secondary: 255 209 102;
   }
 
   .marquee {
