@@ -40,12 +40,6 @@ const Pricing = () => {
             <h3 className="mt-3 text-title font-semibold text-text">
               {pricing.setupFee.label}
             </h3>
-            <p className="mt-2 text-2xl font-semibold text-text">
-              {formatCAD(pricing.setupFee.amount, {
-                minimumFractionDigits: 0,
-                maximumFractionDigits: 0,
-              })}
-            </p>
             <p className="mt-2 text-small text-muted">
               {pricing.setupFee.description}
             </p>

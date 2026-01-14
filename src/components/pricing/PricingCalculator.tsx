@@ -100,18 +100,11 @@ const PricingCalculator = () => {
 
   const isContactOnly = pricingResult.contactOnly;
   const perAthleteRate = pricingResult.perAthleteRate ?? 0;
-  const baseRate = tierSummary.baseRate;
   const estimatedTotal = pricingResult.estimatedTotal ?? 0;
   const annualTotal = estimatedTotal;
-
-  const tierStatus = isContactOnly
-    ? pricing.calculator.tierStatusCustom
-    : tierSummary.tierIndex === 1
-      ? pricing.calculator.tierStatusBase
-      : pricing.calculator.tierStatusDiscount;
-  const tierLabel = pricing.calculator.tierLabelTemplate
-    .replace("{tier}", tierSummary.tierIndex.toString())
-    .replace("{status}", tierStatus);
+  const setupFeeAmount = pricing.setupFee.amount;
+  const hasSetupFee =
+    typeof setupFeeAmount === "number" && Number.isFinite(setupFeeAmount);
 
   const savingsLabel = isContactOnly
     ? pricing.calculator.contactNote
@@ -183,12 +176,9 @@ const PricingCalculator = () => {
               {pricing.calculator.helper}
             </p>
           </div>
-          <div className="rounded-pill border border-border bg-bg px-4 py-2 text-xs uppercase tracking-[0.2em] text-muted">
-            {pricing.calculator.contractBadge}
-          </div>
         </div>
 
-        <div className="mt-8 space-y-6">
+        <div className="mt-8 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div className="rounded-xl border border-border/70 bg-bg p-5">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div>
@@ -257,103 +247,34 @@ const PricingCalculator = () => {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <span className="rounded-pill border border-border/70 bg-bg px-3 py-1 text-xs font-semibold text-text">
-              {tierLabel}
-            </span>
-            <span className="text-xs text-muted">{savingsLabel}</span>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div
-              className={`rounded-lg border border-border/70 bg-bg p-5 transition motion-safe:transition ${resultHighlight}`}
-            >
-              <p className="text-small text-muted">
-                {pricing.calculator.perAthleteLabelAnnual}
-              </p>
-              <p className="mt-3 text-3xl font-semibold text-text font-mono">
+          <div className="space-y-6">
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div
+                className={`rounded-lg border border-border/70 bg-bg p-5 transition motion-safe:transition ${resultHighlight}`}
+              >
+                <p className="text-small text-muted">
+                  {pricing.calculator.perAthleteLabelAnnual}
+                </p>
+                <p className="mt-3 text-3xl font-semibold text-text font-mono">
                 {isContactOnly
                   ? pricing.calculator.contactLabel
-                  : formatCAD(baseRate, {
+                  : formatCAD(perAthleteRate, {
                       minimumFractionDigits: 2,
                       maximumFractionDigits: 2,
                     })}
-              </p>
-              <p className="mt-2 text-xs text-muted">
-                {tierRateNote}
-              </p>
-            </div>
-            <div
-              className={`rounded-lg border border-border/70 bg-bg p-5 transition motion-safe:transition ${resultHighlight}`}
-            >
-              <p className="text-small text-muted">
-                {pricing.calculator.estimatedTotalLabel}
-                {pricing.calculator.estimatedAnnualSuffix}
-              </p>
-              <p className="mt-3 text-2xl font-semibold text-text font-mono">
-                {isContactOnly
-                  ? pricing.calculator.contactLabel
-                  : formatCAD(annualTotal, {
-                      minimumFractionDigits: 0,
-                      maximumFractionDigits: 0,
-                    })}
-              </p>
-              <p className="mt-2 text-xs text-muted">
-                {isContactOnly ? pricing.calculator.contactNote : annualTotalNote}
-              </p>
-              {!isContactOnly ? (
-                <p className="mt-1 text-xs text-muted">{savingsLabel}</p>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="rounded-xl border border-border/70 bg-surface/80 p-5">
-            <div className="flex items-center gap-2">
-              <p className="text-small uppercase tracking-[0.2em] text-muted">
-                {pricing.calculator.breakdownTitle}
-              </p>
-              <Tooltip.Root>
-                <Tooltip.Trigger asChild>
-                  <button
-                    type="button"
-                    className="inline-flex items-center text-muted transition hover:text-text focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-                    aria-label={pricing.calculator.setupTooltip}
-                  >
-                    <Icon name="info" className="text-base" />
-                  </button>
-                </Tooltip.Trigger>
-                <Tooltip.Portal>
-                  <Tooltip.Content
-                    sideOffset={6}
-                    className="rounded-md border border-border bg-surface px-3 py-2 text-xs text-text shadow-strong"
-                  >
-                    {pricing.calculator.setupTooltip}
-                  </Tooltip.Content>
-                </Tooltip.Portal>
-              </Tooltip.Root>
-            </div>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              <div className="rounded-lg border border-border/70 bg-bg p-4">
-                <p className="text-small text-muted">
-                  {pricing.calculator.breakdownFirstYearLabel}
-                </p>
-                <p className="mt-2 text-xl font-semibold text-text font-mono">
-                  {isContactOnly
-                    ? pricing.calculator.contactLabel
-                    : formatCAD(annualTotal + pricing.setupFee.amount, {
-                        minimumFractionDigits: 0,
-                        maximumFractionDigits: 0,
-                      })}
                 </p>
                 <p className="mt-2 text-xs text-muted">
-                  {pricing.calculator.breakdownNoteAnnual}
+                  {tierRateNote}
                 </p>
               </div>
-              <div className="rounded-lg border border-border/70 bg-bg p-4">
+              <div
+                className={`rounded-lg border border-border/70 bg-bg p-5 transition motion-safe:transition ${resultHighlight}`}
+              >
                 <p className="text-small text-muted">
-                  {pricing.calculator.breakdownYearTwoLabel}
+                  {pricing.calculator.estimatedTotalLabel}
+                  {pricing.calculator.estimatedAnnualSuffix}
                 </p>
-                <p className="mt-2 text-xl font-semibold text-text font-mono">
+                <p className="mt-3 text-2xl font-semibold text-text font-mono">
                   {isContactOnly
                     ? pricing.calculator.contactLabel
                     : formatCAD(annualTotal, {
@@ -362,13 +283,87 @@ const PricingCalculator = () => {
                       })}
                 </p>
                 <p className="mt-2 text-xs text-muted">
-                  {pricing.calculator.annualNote}
+                  {isContactOnly ? pricing.calculator.contactNote : annualTotalNote}
                 </p>
+                {!isContactOnly ? (
+                  <p className="mt-1 text-xs text-muted">{savingsLabel}</p>
+                ) : null}
               </div>
             </div>
-          </div>
 
-          <p className="text-xs text-muted">{pricing.disclaimer}</p>
+            <div className="rounded-xl border border-border/70 bg-surface/80 p-5">
+              <div className="flex items-center gap-2">
+                <p className="text-small uppercase tracking-[0.2em] text-muted">
+                  {pricing.calculator.breakdownTitle}
+                </p>
+                <Tooltip.Root>
+                  <Tooltip.Trigger asChild>
+                    <button
+                      type="button"
+                      className="inline-flex items-center text-muted transition hover:text-text focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+                      aria-label={pricing.calculator.setupTooltip}
+                    >
+                      <Icon name="info" className="text-base" />
+                    </button>
+                  </Tooltip.Trigger>
+                  <Tooltip.Portal>
+                    <Tooltip.Content
+                      sideOffset={6}
+                      className="rounded-md border border-border bg-surface px-3 py-2 text-xs text-text shadow-strong"
+                    >
+                      {pricing.calculator.setupTooltip}
+                    </Tooltip.Content>
+                  </Tooltip.Portal>
+                </Tooltip.Root>
+              </div>
+              <div className="mt-4 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-lg border border-border/70 bg-bg p-4">
+                  <p className="text-small text-muted">
+                    {pricing.calculator.breakdownFirstYearLabel}
+                  </p>
+                {isContactOnly ? (
+                  <p className="mt-2 text-xl font-semibold text-text font-mono">
+                    {pricing.calculator.contactLabel}
+                  </p>
+                ) : hasSetupFee ? (
+                  <p className="mt-2 text-xl font-semibold text-text font-mono">
+                    {formatCAD(annualTotal + setupFeeAmount, {
+                      minimumFractionDigits: 0,
+                      maximumFractionDigits: 0,
+                    })}
+                  </p>
+                ) : (
+                  <p className="mt-2 text-sm font-semibold text-text">
+                    {pricing.setupFee.note}
+                  </p>
+                )}
+                <p className="mt-2 text-xs text-muted">
+                  {hasSetupFee
+                    ? pricing.calculator.breakdownNoteAnnual
+                    : pricing.setupFee.description}
+                </p>
+              </div>
+                <div className="rounded-lg border border-border/70 bg-bg p-4">
+                  <p className="text-small text-muted">
+                    {pricing.calculator.breakdownYearTwoLabel}
+                  </p>
+                  <p className="mt-2 text-xl font-semibold text-text font-mono">
+                    {isContactOnly
+                      ? pricing.calculator.contactLabel
+                      : formatCAD(annualTotal, {
+                          minimumFractionDigits: 0,
+                          maximumFractionDigits: 0,
+                        })}
+                  </p>
+                  <p className="mt-2 text-xs text-muted">
+                    {pricing.calculator.annualNote}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-xs text-muted">{pricing.disclaimer}</p>
+          </div>
         </div>
 
         <div className="mt-8 border-t border-border/60 pt-6">
