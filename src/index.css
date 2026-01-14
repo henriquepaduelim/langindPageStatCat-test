@@ -69,7 +69,7 @@ svg {
 }
 
 section {
-  scroll-margin-top: 96px;
+  scroll-margin-top: 136px;
 }
 
 .material-symbols-outlined {
@@ -115,6 +115,19 @@ section {
     --color-border: var(--section-light-border);
   }
 
+  .marquee {
+    @apply relative flex items-center overflow-hidden whitespace-nowrap;
+  }
+
+  .marquee-track {
+    display: inline-flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: 100%;
+    animation: marquee 18s linear infinite;
+    will-change: transform;
+  }
+
   .btn {
     @apply inline-flex items-center justify-center gap-2 rounded-pill px-6 py-3 text-sm font-semibold tracking-tight transition;
   }
@@ -150,6 +163,25 @@ section {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .marquee {
+    justify-content: center;
+  }
+
+  .marquee-track {
+    animation: none;
+    padding-left: 0;
+    transform: translateX(0);
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
   }
 }
 

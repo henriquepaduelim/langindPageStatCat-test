@@ -3,26 +3,16 @@ import { content } from "../data/content";
 import Icon from "./Icon";
 import { smoothScrollToId } from "../utils/smoothScroll";
 
-const canadaFlagUrl = new URL("../../ca.svg", import.meta.url).href;
-
 const Hero = () => {
   const handleScroll = (id: string) => (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    smoothScrollToId(id, 96);
+    smoothScrollToId(id, 136);
   };
 
   return (
     <section id="hero" className="section-dark relative overflow-hidden">
       <div className="mx-auto grid max-w-content gap-16 px-4 py-hero sm:px-6 lg:grid-cols-[0.7fr_1.3fr] lg:items-center lg:px-8">
         <div className="space-y-6 animate-fade-up">
-          <div className="pill">
-            <img
-              src={canadaFlagUrl}
-              alt="Canada flag"
-              className="h-5 w-5"
-            />
-            <span>{content.hero.trustLine}</span>
-          </div>
           <h1 className="font-display text-display text-text">
             {content.hero.headline}
           </h1>

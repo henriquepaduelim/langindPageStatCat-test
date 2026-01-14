@@ -24,15 +24,15 @@ export const content = {
   ],
   hero: {
     trustLine:
-      "Proudly Canadian. Built for football programs that want professional standards.",
+      "Proudly Canadian. Built for sports programs that want professional standards.",
     headline:
-      "White-label your club with a development platform that tracks athletes over time.",
+      "Your club's own app for tracking athlete development over time.",
     subheadline:
       "StatCat is a development and communication platform for football programs. Branded as your own app, it documents evaluations, report cards, schedules, and family updates from sessions to seasons.",
     primaryCta: "Book a demo",
     secondaryCta: "See how it works",
     highlights: [
-      "White-label ready",
+      "Your club's own app",
       "Athlete development focus",
       "Clear communication",
       "Proudly Canadian",
@@ -51,9 +51,9 @@ export const content = {
     eyebrow: "Why StatCat",
     title: "Built for Canadian football programs",
     subtitle:
-      "A professional interface between club, athlete, and family with white-label branding and structured development data.",
+      "A professional interface between club, athlete, and family with a branded app that looks and feels like your club and structured development data.",
     metrics: [
-      { label: "Your club, your brand", value: "White-label" },
+      { label: "Your club, your brand", value: "Your own app" },
       { label: "Professional feedback", value: "Report cards" },
       { label: "Long-term tracking", value: "Sessions to seasons" },
       { label: "Local onboarding", value: "Canadian support" },
@@ -107,9 +107,9 @@ export const content = {
         icon: "event_available",
       },
       {
-        title: "White-label branding",
+        title: "Your club's own app",
         description:
-          "Your club name, logo, and colors make the app feel proprietary and professional.",
+          "Your name, logo, and colors make the app feel like your club and build credibility.",
         icon: "palette",
       },
       {
@@ -122,13 +122,13 @@ export const content = {
   },
   howItWorks: {
     eyebrow: "Process",
-    title: "From white-label setup to visible progress",
+    title: "From launching your club's own app to visible progress",
     stepLabel: "Step",
     steps: [
       {
         title: "Set up your club and brand",
         description:
-          "Apply your name, logo, and colors for a white-label experience.",
+          "Launch your club's own app with your name, logo, and colors.",
         icon: "palette",
       },
       {
@@ -166,7 +166,7 @@ export const content = {
         description:
           "Lead with a professional brand and a clear digital presence.",
         bullets: [
-          "White-label app that looks and feels like your club",
+          "An app that looks and feels like your club",
           "Development records and report cards you can stand behind",
           "Website creation and maintenance to boost credibility",
         ],
@@ -200,7 +200,7 @@ export const content = {
           "Run specialized programs with measurable development and consistent branding.",
         bullets: [
           "Program-specific testing and evaluation templates",
-          "White-label experience for each academy or camp",
+          "A branded app experience for each academy or camp",
           "Professional web presence to attract new families",
         ],
         icon: "sports_football",
@@ -209,36 +209,73 @@ export const content = {
   },
   pricing: {
     eyebrow: "Pricing",
-    title: "Transparent pricing for white-label football programs",
+    title: "Simple pricing for clubs ready to have their own app",
     subtitle:
-      "Monthly billing is CAD $1.20 per athlete. Annual contracts start at CAD $1.00 per athlete and decrease with volume. White-label branding is included, with website creation and maintenance available as an add-on.",
+      "Your club's own app, athlete tracking, report cards, clear communication, and scheduling — pricing that scales as you grow.",
+    subtitleNote:
+      "Plans start around CAD $1 per athlete with volume discounts.",
+    callout: "Your club's own app is included in every plan.",
     toggle: {
       monthly: "Monthly",
       annual: "Annual",
     },
     calculator: {
       label: "Calculator",
-      heading: "Estimate your annual contract cost",
+      heading: "See how pricing scales with your club",
+      helper:
+        "Set the athlete count to see your club's estimate.",
       contractBadge: "Annual contract pricing",
       athleteCountLabel: "Athlete count",
-      athleteInputLabel: "Edit",
+      athleteInputLabel: "Athletes",
       athleteRangeLabel: "Athlete count",
-      perAthleteLabel: "Per athlete / month (annual contract)",
+      perAthleteLabelAnnual: "Around CAD $1 / athlete / month (annual)",
+      perAthleteLabelMonthly: "Per athlete / month (monthly plan)",
       perAthleteAnnualSuffix: "",
-      estimatedTotalLabel: "Estimated total",
+      estimatedTotalLabel: "Estimated annual total",
       estimatedMonthlySuffix: " / month",
-      estimatedAnnualSuffix: " / year",
-      monthlyNote:
-        "Monthly plan is CAD $1.20 per athlete. Annual contract pricing is shown below.",
+      estimatedAnnualSuffix: "",
+      monthlyNote: "Monthly billing uses a flat per-athlete rate.",
       annualNote: "Pricing shown reflects an annual contract.",
       contactNote: "Over 500 athletes? Contact us to confirm the best option.",
       contactLabel: "Contact us",
+      estimatedPerAthleteNoteTemplate:
+        "That's about {rate} per athlete / month (annual contract).",
+      billingLabel: "Billing cycle",
+      billingAnnual: "Annual (best value)",
+      billingMonthly: "Monthly",
+      billingMonthlyTooltip:
+        "Monthly pricing shown for comparison. Annual contracts unlock volume discounts.",
+      tierLabelTemplate: "Volume tier — {status}",
+      tierStatusBase: "Base rate",
+      tierStatusDiscount: "Volume discount active",
+      tierStatusCustom: "Custom pricing",
+      savingsLabelTemplate: "Volume discount active for your tier",
+      savingsZeroLabel: "Base rate for your tier",
+      tierRateNoteTemplate: "Base rate shown. Volume discounts apply by tier.",
+      annualTotalNoteTemplate: "Based on {count} athletes.",
+      shareLabel: "Copy link",
+      shareTooltip: "Share this estimate with your club.",
+      shareCopied: "Link copied",
+      breakdownTitle: "Cost outlook",
+      breakdownFirstYearLabel: "First year estimate",
+      breakdownYearTwoLabel: "Year 2+ estimate",
+      breakdownNoteAnnual: "Includes one-time setup.",
+      breakdownNoteMonthly: "Monthly plan shown as an annualized estimate.",
+      setupTooltip:
+        "Setup includes club-branded app configuration, onboarding, and launch support.",
     },
     setupFee: {
-      eyebrow: "Setup",
-      label: "One-time setup fee",
+      eyebrow: "Setup & launch",
+      label: "One-time setup & launch",
       amount: 1500,
-      description: "Includes white-label setup, onboarding, and configuration.",
+      description: "A one-time launch investment to get your club live.",
+      bullets: [
+        "Club-branded app setup",
+        "Configuration and onboarding",
+        "Launch support",
+        "Ready for athletes and parents",
+      ],
+      note: "Paid once. Your club's app is yours.",
     },
     tiers: [
       { min: 1, max: 100, rate: 1.0 },
@@ -250,16 +287,30 @@ export const content = {
     defaultAthletes: 120,
     monthlyRate: 1.2,
     contactThreshold: 500,
-    volumeNote: "White-label branding is included with every plan.",
+    volumeNote: "Volume discounts apply automatically as you grow.",
     disclaimer:
       "Final pricing may vary by club needs, onboarding scope, and optional website services.",
-    addonsLabel: "Add-ons and premium services",
+    addonsLabel: "Grow your club's visibility",
     addons: [
-      "Club website creation and ongoing maintenance (optional)",
-      "Dedicated launch support for multi-club organizations",
-      "Custom reporting dashboards and data exports",
-      "White-label asset design assistance",
+      "Professional club website — creation and ongoing maintenance (optional)",
+      "Dedicated launch support — for multi-team or multi-club organizations",
+      "Advanced reporting and exports — for clubs that want deeper insights",
+      "Branding assistance — align app visuals with your club identity",
     ],
+    idealFor: {
+      title: "Ideal for",
+      bullets: [
+        "Clubs that want a professional experience for parents and athletes",
+        "Academies focused on long-term athlete development",
+        "Programs tired of spreadsheets and scattered messaging",
+      ],
+    },
+    cta: {
+      title: "Not sure what fits your club?",
+      text: "We’ll help you choose the right setup based on your athlete count and goals.",
+      primaryLabel: "Book a demo",
+      secondaryLabel: "Talk to us about pricing",
+    },
   },
   testimonials: {
     eyebrow: "Testimonials",
@@ -267,7 +318,7 @@ export const content = {
     items: [
       {
         quote:
-          "The white-label app makes our club look professional, and the development history keeps everyone aligned.",
+          "Our club's own app makes us look professional, and the development history keeps everyone aligned.",
         name: "Jordan Lee",
         role: "Club Operations Director",
         location: "Ontario",
@@ -298,9 +349,9 @@ export const content = {
           "Yes. The app is branded with your club name, logo, and colors so families see your club, not a generic platform.",
       },
       {
-        question: "Is StatCat white-labeled?",
+        question: "Is this our own app or a shared platform?",
         answer:
-          "Yes. Every club gets a white-label experience including app naming, visual identity, and branded communications.",
+          "It's your club's own branded app with your name, logo, and colors, so families see your club, not a generic platform.",
       },
       {
         question: "Do you also build and maintain club websites?",
@@ -321,11 +372,11 @@ export const content = {
   },
   cta: {
     eyebrow: "Demo",
-    title: "Give your club its own white-label development platform",
+    title: "Give your club its own app for development and communication",
     subtitle:
       "Book a demo to see how StatCat tracks athlete progress, streamlines communication, and supports your club's digital presence with an optional website.",
     highlights: [
-      "White-label app branded to your club",
+      "Your club's own app, branded to your name and colors",
       "Report cards and development summaries built in",
       "Optional club website creation and maintenance",
       "Proudly Canadian support and onboarding",
@@ -340,18 +391,18 @@ export const content = {
       emailInvalid: "Please enter a valid email address.",
     },
     consent: "By submitting, you agree to receive demo communications from StatCat.",
-    toast: "Thanks for your request. Our team will follow up shortly.",
+    toast: "Thanks for booking a demo. Our team will follow up shortly.",
   },
   footer: {
     line:
-      "White-label development and communication for football programs across Canada.",
+      "Athlete development tracking, report cards, scheduling, and clear communication for sports programs across Canada.",
     contactEmail: "hello@statcatsports.ca",
     linksHeading: "Links",
     contactHeading: "Contact",
     contactLabel: "Email",
     copyright: "All rights reserved.",
     copyrightTemplate: "(c) {year} {brand}. {rights}",
-    proudBadge: "Proudly Canadian",
+    proudBadge: "",
     links: [
       { label: "Privacy", href: "#" },
       { label: "Terms", href: "#" },

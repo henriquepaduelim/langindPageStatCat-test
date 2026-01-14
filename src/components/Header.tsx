@@ -27,12 +27,20 @@ const Header = () => {
 
   const handleNavClick = (id: string) => (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-    smoothScrollToId(id, 96);
+    smoothScrollToId(id, 136);
     setMenuOpen(false);
   };
 
   return (
     <header className="section-dark sticky top-0 z-50 border-b border-border/40 bg-surface/90 backdrop-blur">
+      <div className="marquee h-10 border-b border-border/40 bg-surface/80">
+        <span className="sr-only">{content.hero.trustLine}</span>
+        <div className="marquee-track" aria-hidden="true">
+          <span className="px-6 text-xs uppercase tracking-[0.32em] text-muted">
+            {content.hero.trustLine}
+          </span>
+        </div>
+      </div>
       <div className="mx-auto flex h-24 max-w-content items-center justify-between px-4 sm:px-6 lg:px-8">
         <a
           href="#hero"
