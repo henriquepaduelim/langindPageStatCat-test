@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type ReportCardBadgeProps = {
   photoSrc: string;
@@ -10,8 +10,14 @@ const canadaFlagUrl = new URL("../../ca.svg", import.meta.url).href;
 
 const ReportCardBadge = ({ photoSrc, photoAlt }: ReportCardBadgeProps) => {
   const [pinned, setPinned] = useState(false);
-  const [hovered, setHovered] = useState(false);
-  const flipped = pinned || hovered;
+  const [pulse, setPulse] = useState(false);
+  const flipped = pinned;
+
+  useEffect(() => {
+    if (!pulse) return;
+    const timeout = window.setTimeout(() => setPulse(false), 240);
+    return () => window.clearTimeout(timeout);
+  }, [pulse]);
 
   const metrics = [
     ["SRS", 60],
@@ -26,18 +32,11 @@ const ReportCardBadge = ({ photoSrc, photoAlt }: ReportCardBadgeProps) => {
   return (
     <button
       type="button"
-      onClick={() => setPinned((value) => !value)}
-      onPointerEnter={(event) => {
-        if (event.pointerType !== "touch") {
-          setHovered(true);
-        }
+      onClick={() => {
+        setPinned((value) => !value);
+        setPulse(true);
       }}
-      onPointerLeave={(event) => {
-        if (event.pointerType !== "touch") {
-          setHovered(false);
-        }
-      }}
-      className="group relative w-full max-w-[360px] rounded-[28px] shadow-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:max-w-[400px] lg:max-w-[440px]"
+      className={`group relative w-full max-w-[360px] rounded-[28px] shadow-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg motion-safe:transition-[transform,box-shadow] motion-safe:duration-200 active:scale-[0.99] sm:max-w-[400px] lg:max-w-[440px] ${pulse ? "ring-1 ring-white/20" : ""}`}
       style={{ perspective: "1200px" }}
       aria-pressed={pinned}
       aria-label="Report card badge preview"
@@ -54,9 +53,9 @@ const ReportCardBadge = ({ photoSrc, photoAlt }: ReportCardBadgeProps) => {
           style={{ backfaceVisibility: "hidden" }}
         >
           <div className="flex min-h-[280px] flex-1 overflow-hidden bg-[#141722] sm:min-h-[320px] lg:min-h-[360px]">
-            <div className="flex w-[26%] flex-col items-center justify-center gap-3 py-4 text-white">
-              <div className="text-4xl font-extrabold leading-none">78</div>
-              <div className="w-full text-center text-sm font-semibold uppercase tracking-[0.2em]">
+            <div className="flex w-[18%] flex-col items-center justify-center gap-3 py-4 text-white">
+              <div className="text-5xl font-extrabold leading-none">78</div>
+              <div className="w-full text-center text-sm font-semibold uppercase -tracking-widest-[0.2em]">
                 GK
               </div>
               <div className="h-px w-10 bg-white/50" />
@@ -97,7 +96,7 @@ const ReportCardBadge = ({ photoSrc, photoAlt }: ReportCardBadgeProps) => {
                     key={label}
                     className="grid grid-cols-[auto,1fr] items-baseline gap-x-2"
                   >
-                    <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80">
+                    <span className="text-[18px] font-semibold uppercase tracking-[0.22em] text-white/80">
                       {label}
                     </span>
                     <span className="text-xl font-extrabold tabular-nums text-right">

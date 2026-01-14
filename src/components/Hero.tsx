@@ -40,7 +40,7 @@ const Hero = () => {
           </ul>
         </div>
 
-        <div className="relative flex justify-center animate-fade-in lg:justify-end">
+        <div className="relative flex justify-center animate-fade-in">
           <ReportCardBadge
             photoSrc={content.hero.preview.video.src}
             photoAlt={content.hero.preview.video.label}
