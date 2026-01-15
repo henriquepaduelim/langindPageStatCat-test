@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import type { TouchEvent, TransitionEvent } from "react";
+import { flushSync } from "react-dom";
 import { content } from "../data/content";
 import Icon from "./Icon";
 
@@ -83,24 +84,9 @@ const Features = () => {
       return;
     }
     isAnimatingRef.current = true;
-    setTransitionEnabled(false);
-    setCarouselItems((items) => {
-      if (items.length <= 1) {
-        return items;
-      }
-      if (direction === 1) {
-        const [first, ...rest] = items;
-        return [...rest, first];
-      }
-      const last = items[items.length - 1];
-      return [last, ...items.slice(0, -1)];
-    });
-    setCarouselShift(direction === 1 ? offset : -offset);
-    requestAnimationFrame(() => {
-      pendingDirectionRef.current = direction;
-      setTransitionEnabled(true);
-      setCarouselShift(0);
-    });
+    pendingDirectionRef.current = direction;
+    setTransitionEnabled(true);
+    setCarouselShift(direction === 1 ? -offset : offset);
   };
 
   const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
@@ -169,7 +155,13 @@ const Features = () => {
   };
 
   const handleTransitionEnd = (event: TransitionEvent<HTMLDivElement>) => {
+    if (event.currentTarget !== event.target) {
+      return;
+    }
     if (event.propertyName !== "transform") {
+      return;
+    }
+    if (!isAnimatingRef.current) {
       return;
     }
     const direction = pendingDirectionRef.current;
@@ -177,7 +169,28 @@ const Features = () => {
       return;
     }
     pendingDirectionRef.current = 0;
-    isAnimatingRef.current = false;
+    flushSync(() => {
+      setTransitionEnabled(false);
+      setCarouselShift(0);
+      setCarouselItems((items) => {
+        if (items.length <= 1) {
+          return items;
+        }
+        if (direction === 1) {
+          const [first, ...rest] = items;
+          return [...rest, first];
+        }
+        const last = items[items.length - 1];
+        return [last, ...items.slice(0, -1)];
+      });
+    });
+    if (carouselRef.current) {
+      void carouselRef.current.offsetHeight;
+    }
+    requestAnimationFrame(() => {
+      setTransitionEnabled(true);
+      isAnimatingRef.current = false;
+    });
   };
 
   return (
@@ -251,7 +264,8 @@ const Features = () => {
                 onTransitionEnd={handleTransitionEnd}
                 className="flex w-max gap-[0.45rem] transform-gpu"
                 style={{
-                  transform: `translateX(${carouselShift}px)`,
+                  transform: `translate3d(${carouselShift}px, 0, 0)`,
+                  willChange: "transform",
                   transition: transitionEnabled
                     ? `transform ${CAROUSEL_TRANSITION_MS}ms ease`
                     : "none",

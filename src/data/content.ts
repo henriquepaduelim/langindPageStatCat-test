@@ -32,7 +32,7 @@ export const content = {
     subheadline:
       "StatCat brings development tracking, report cards, schedules, and family updates into one polished experience - branded for your club.",
     primaryCta: "Book a demo",
-    secondaryCta: "See how it works",
+    secondaryCta: "Learn More",
     highlights: [
       "Your own branded club app",
       "Development tracking from sessions to seasons",
