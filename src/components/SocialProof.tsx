@@ -44,7 +44,7 @@ const SocialProof = () => {
                 : "origin-center";
               const hoverScaleClass = isAppCard
                 ? "group-hover:scale-[2.5]"
-                : "group-hover:scale-[1.25]";
+                : "group-hover:scale-[1.45]";
               const imageFitClass = isAppCard ? "object-contain" : "object-cover";
 
               return (
