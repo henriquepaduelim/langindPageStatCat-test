@@ -304,23 +304,6 @@ const Features = () => {
           </div>
         </div>
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {gridItems.map((feature, index) => (
-            <div
-              key={feature.title}
-              className="card animate-fade-up"
-              style={{ animationDelay: `${index * 80}ms` }}
-            >
-              <div className="grid h-12 w-12 place-items-center rounded-md bg-primary/10 text-primary">
-                <Icon name={feature.icon} className="text-2xl leading-none" />
-              </div>
-              <h3 className="mt-4 text-title font-semibold text-text">
-                {feature.title}
-              </h3>
-              <p className="mt-2 text-small text-muted">{feature.description}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
