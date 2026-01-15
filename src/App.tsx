@@ -11,6 +11,7 @@ import FAQ from "./components/FAQ";
 import CTA from "./components/CTA";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import WebsiteService from "./components/WebsiteService";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Testimonials />
         <FAQ />
         <CTA />
+        <WebsiteService />
       </main>
       <Footer />
       <ScrollToTop />

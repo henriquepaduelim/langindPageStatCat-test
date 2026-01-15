@@ -115,9 +115,9 @@ export const content = {
         icon: "palette",
       },
       {
-        title: "Digital presence and club website",
+        title: "Digital presence and club story",
         description:
-          "Launch and maintain a club website that matches your app's look and message.",
+          "Share program updates and achievements with a polished, branded presence.",
         icon: "language",
       },
     ],
@@ -154,7 +154,7 @@ export const content = {
       {
         title: "Strengthen digital presence",
         description:
-          "Extend your brand with an optional club website aligned to the app.",
+          "Share program highlights and announcements with a consistent brand voice.",
         icon: "public",
       },
     ],
@@ -170,7 +170,7 @@ export const content = {
         bullets: [
           "An app that looks and feels like your club",
           "Development records and report cards you can stand behind",
-          "Website creation and maintenance to boost credibility",
+          "Branded communications to boost credibility",
         ],
         icon: "verified_user",
       },
@@ -299,10 +299,10 @@ export const content = {
     contactThreshold: 500,
     volumeNote: "Volume discounts apply automatically as you grow.",
     disclaimer:
-      "Final pricing may vary by club needs, onboarding scope, and optional website services.",
+      "Final pricing may vary by club needs, onboarding scope, and optional add-on services.",
     addonsLabel: "Grow your club's visibility",
     addons: [
-      "Professional club website — creation and ongoing maintenance (optional)",
+      "Club media kit - launch assets for families and partners (optional)",
       "Dedicated launch support — for multi-team or multi-club organizations",
       "Advanced reporting and exports — for clubs that want deeper insights",
       "Branding assistance — align app visuals with your club identity",
@@ -364,11 +364,6 @@ export const content = {
           "It's your club's own branded app with your name, logo, and colors, so families see your club, not a generic platform.",
       },
       {
-        question: "Do you also build and maintain club websites?",
-        answer:
-          "Yes. We offer website creation and ongoing maintenance as an optional service aligned to your app branding.",
-      },
-      {
         question: "Who owns the data?",
         answer:
           "Your club owns its data. We provide secure access controls and export options for administrators.",
@@ -380,15 +375,26 @@ export const content = {
       },
     ],
   },
+  websiteService: {
+    eyebrow: "Website Service",
+    title: "A professional club website, built to match your brand",
+    description:
+      "We design, launch, and maintain a modern website that mirrors your app and showcases your program to families and recruits.",
+    bullets: [
+      "Custom design aligned to your club brand",
+      "Hosting, updates, and ongoing support",
+    ],
+    ctaLabel: "Ask about website service",
+  },
   cta: {
     eyebrow: "Demo",
     title: "Give your club its own app for development and communication",
     subtitle:
-      "Book a demo to see how StatCat tracks athlete progress, streamlines communication, and supports your club's digital presence with an optional website.",
+      "Book a demo to see how StatCat tracks athlete progress, streamlines communication, and keeps families aligned.",
     highlights: [
       "Your club's own app, branded to your name and colors",
       "Report cards and development summaries built in",
-      "Optional club website creation and maintenance",
+      "Scheduling and event updates in one place",
       "Proudly Canadian support and onboarding",
     ],
     form: {
