@@ -1,7 +1,47 @@
+import { useRef } from "react";
 import { content } from "../data/content";
 import Icon from "./Icon";
 
 const Features = () => {
+  const carouselImages = [
+    {
+      key: "Report cards and evaluations",
+      src: "/media/iphonemockReportcard.png",
+      alt: "Report cards screen on iPhone",
+    },
+    {
+      key: "Scheduling and events",
+      src: "/media/iphonemockscheduling.png",
+      alt: "Scheduling screen on iPhone",
+    },
+    {
+      key: "Approvals",
+      src: "/media/iphonemockApprove.png",
+      alt: "Approvals screen on iPhone",
+    },
+    {
+      key: "Communication hub",
+      src: "/media/iphoneRSVP.png",
+      alt: "Communication hub screen on iPhone",
+    },
+  ];
+  const gridItems = content.features.items.filter(
+    (item) => !carouselImages.some((image) => image.key === item.title)
+  );
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  const scrollCarousel = (direction: number) => {
+    const node = carouselRef.current;
+    if (!node) {
+      return;
+    }
+    const firstItem = node.firstElementChild as HTMLElement | null;
+    const gap = Number.parseFloat(getComputedStyle(node).gap || "0");
+    const scrollAmount =
+      (firstItem?.getBoundingClientRect().width ?? node.clientWidth) + gap;
+    node.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
+  };
+
   return (
     <section id="features" className="section-dark py-section">
       <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
@@ -58,8 +98,50 @@ const Features = () => {
           </figure>
         </div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
-          {content.features.items.map((feature, index) => (
+        <div className="mt-12 -mx-4 sm:-mx-6 lg:-mx-8">
+          <div className="relative">
+            <div
+              id="features-carousel"
+              ref={carouselRef}
+              className="carousel-scrollbar-hidden flex snap-x snap-mandatory gap-[0.45rem] overflow-x-auto scroll-smooth pb-4 px-4 sm:px-6 lg:px-8"
+            >
+              {carouselImages.map((image) => (
+                <div
+                  key={image.key}
+                  className="group shrink-0 snap-start overflow-hidden"
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="block h-[800px] w-[400px] max-h-[80vh] max-w-[90vw] transform-gpu object-contain opacity-65 transition duration-300 ease-out group-hover:scale-[1.03] group-hover:opacity-100"
+                    loading="lazy"
+                  />
+                </div>
+              ))}
+            </div>
+            <button
+              type="button"
+              onClick={() => scrollCarousel(-1)}
+              className="absolute left-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border/60 bg-surface/80 text-text shadow-soft transition hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:flex"
+              aria-label="Scroll carousel left"
+              aria-controls="features-carousel"
+            >
+              <Icon name="chevron_left" className="text-[22px]" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollCarousel(1)}
+              className="absolute right-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border/60 bg-surface/80 text-text shadow-soft transition hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:flex"
+              aria-label="Scroll carousel right"
+              aria-controls="features-carousel"
+            >
+              <Icon name="chevron_right" className="text-[22px]" />
+            </button>
+          </div>
+        </div>
+
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          {gridItems.map((feature, index) => (
             <div
               key={feature.title}
               className="card animate-fade-up"
