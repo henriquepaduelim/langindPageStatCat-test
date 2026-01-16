@@ -12,6 +12,7 @@ const Features = () => {
       key: "Report cards and evaluations",
       src: "/media/iphonemockReportcard.png",
       alt: "Report cards screen on iPhone",
+      overlayInset: "9% 12% 18% 12%",
       caption: "Send report cards in a professional, organized format.",
     },
     {
@@ -229,9 +230,9 @@ const Features = () => {
           </div>
 
           <figure>
-            <div className="overflow-hidden rounded-2xl bg-surface/90 shadow-strong">
+            <div className="group overflow-hidden rounded-2xl bg-surface/90 shadow-strong">
               <video
-                className="h-full w-full object-cover"
+                className="h-full w-full transform-gpu object-cover transition duration-500 ease-out group-hover:scale-[1.3]"
                 src={content.features.highlight.video.src}
                 autoPlay
                 muted
@@ -239,6 +240,7 @@ const Features = () => {
                 playsInline
                 preload="none"
                 aria-label={content.features.highlight.video.ariaLabel}
+                style={{ transformOrigin: "74% 64%" }}
               />
             </div>
             <figcaption className="mt-4 text-small text-muted">
@@ -284,8 +286,8 @@ const Features = () => {
                       loading="lazy"
                     />
                     <div
-                      className="pointer-events-none absolute translate-y-2 rounded-[18px] opacity-0 transition duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100"
-                      style={{ inset: "9% 12% 10% 12%" }}
+                      className="pointer-events-none absolute translate-y-1 opacity-0 transition duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100"
+                      style={{ inset: image.overlayInset ?? "9% 12% 10% 12%" }}
                     >
                       <div className="flex h-full w-full items-end overflow-hidden rounded-[18px]">
                         <div className="w-full bg-gradient-to-t from-black/90 via-black/65 to-black/35 px-4 pb-1 pt-10 sm:px-5 sm:pb-5">
@@ -307,20 +309,20 @@ const Features = () => {
             <button
               type="button"
               onClick={() => shiftCarousel(-1)}
-              className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border/60 bg-surface/80 text-text shadow-soft transition hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:h-11 sm:w-11"
+              className="absolute left-3 top-1/2 flex -translate-y-1/2 items-center justify-center text-text/80 transition hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
               aria-label="Scroll carousel left"
               aria-controls="features-carousel"
             >
-              <Icon name="chevron_left" className="text-[18px] sm:text-[22px]" />
+              <Icon name="chevron_left" className="text-[24px] sm:text-[28px]" />
             </button>
             <button
               type="button"
               onClick={() => shiftCarousel(1)}
-              className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border/60 bg-surface/80 text-text shadow-soft transition hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:h-11 sm:w-11"
+              className="absolute right-3 top-1/2 flex -translate-y-1/2 items-center justify-center text-text/80 transition hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
               aria-label="Scroll carousel right"
               aria-controls="features-carousel"
             >
-              <Icon name="chevron_right" className="text-[18px] sm:text-[22px]" />
+              <Icon name="chevron_right" className="text-[24px] sm:text-[28px]" />
             </button>
           </div>
         </div>

@@ -20,10 +20,12 @@ const UseCases = () => {
               className="card animate-fade-up"
               style={{ animationDelay: `${index * 90}ms` }}
             >
-              <div className="grid h-12 w-12 place-items-center rounded-md bg-accent/10 text-accent">
-                <Icon name={item.icon} className="text-2xl leading-none" />
+              <div className="flex justify-center">
+                <div className="flex h-12 w-12 items-center justify-center text-accent">
+                  <Icon name={item.icon} className="text-4xl leading-none" />
+                </div>
               </div>
-              <h3 className="mt-4 text-title font-semibold text-text">
+              <h3 className="mt-6 text-title font-semibold text-text text-center">
                 {item.title}
               </h3>
               <p className="mt-2 text-small text-muted">{item.description}</p>

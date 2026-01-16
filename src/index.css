@@ -4,7 +4,7 @@
 
 :root {
   --color-primary: 18 126 160;
-  --color-secondary: 255 209 102;
+  --color-secondary: 128 25 100;
   --color-accent: 229 158 54;
   --color-bg: 245 247 249;
   --color-surface: 255 255 255;
@@ -107,7 +107,7 @@ section {
     --color-text: var(--section-dark-text);
     --color-muted: var(--section-dark-muted);
     --color-border: var(--section-dark-border);
-    --color-secondary: 155 197 61;
+    --color-secondary: 128 255 0;
   }
 
   .section-light {
@@ -120,7 +120,7 @@ section {
     --color-text: var(--section-light-text);
     --color-muted: var(--section-light-muted);
     --color-border: var(--section-light-border);
-    --color-secondary: 255 209 102;
+    --color-secondary: 128 255 0;
   }
 
   .section-invert-text {

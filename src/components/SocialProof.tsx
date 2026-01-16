@@ -13,17 +13,23 @@ const SocialProof = () => {
               {content.socialProof.title}
             </h2>
             <p className="text-body text-muted">{content.socialProof.subtitle}</p>
-            <video
-              className="h-auto w-full max-w-[520px] rounded-2xl shadow-soft"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              aria-label="Elite One Goalkeepers app preview"
-            >
-              <source src="/media/EliteOneGoalkeepers.webm" type="video/webm" />
-            </video>
+            <div className="group w-full max-w-[520px] overflow-hidden rounded-2xl shadow-soft">
+              <video
+                className="h-auto w-full transform-gpu object-cover transition duration-500 ease-out group-hover:scale-[1.3]"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                aria-label="Elite One Goalkeepers app preview"
+                style={{ transformOrigin: "78% 67%" }}
+              >
+                <source
+                  src="/media/EliteOneGoalkeepers.webm"
+                  type="video/webm"
+                />
+              </video>
+            </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
             {content.socialProof.metrics.map((metric) => {
@@ -34,7 +40,7 @@ const SocialProof = () => {
                   : metric.value === "Report cards"
                     ? "/media/reportcardsIphone.png"
                     : isAppCard
-                      ? "/media/elite1iphoneicone.svg"
+                      ? "/media/elite1iphoneicone.png"
                       : null;
               const imageAlt = isAppCard
                 ? "StatCat app icon"

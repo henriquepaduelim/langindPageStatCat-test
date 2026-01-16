@@ -128,9 +128,9 @@ export const content = {
     stepLabel: "Step",
     steps: [
       {
-        title: "Set up your club and brand",
+        title: "Set your brand and onboard existing athletes",
         description:
-          "Launch your club's own app with your name, logo, and colors.",
+          "Apply your logo, colors, and name, then bring in your current athlete roster.",
         icon: "palette",
       },
       {
