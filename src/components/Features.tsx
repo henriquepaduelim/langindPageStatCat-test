@@ -12,29 +12,30 @@ const Features = () => {
       key: "Report cards and evaluations",
       src: "/media/iphonemockReportcard.png",
       alt: "Report cards screen on iPhone",
+      caption: "Send report cards in a professional, organized format.",
     },
     {
       key: "Scheduling and events",
       src: "/media/iphonemockscheduling.png",
       alt: "Scheduling screen on iPhone",
+      caption: "Schedule sessions and events in one centralized calendar.",
     },
     {
       key: "Approvals",
       src: "/media/iphonemockApprove.png",
       alt: "Approvals screen on iPhone",
+      caption: "Approve reports submitted by coaches and staff.",
     },
     {
       key: "Communication hub",
       src: "/media/iphoneRSVP.png",
       alt: "Communication hub screen on iPhone",
+      caption: "Confirm attendance for events and keep rosters accurate.",
     },
   ];
   const [carouselItems, setCarouselItems] = useState(() => carouselImages);
   const [carouselShift, setCarouselShift] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
-  const gridItems = content.features.items.filter(
-    (item) => !carouselImages.some((image) => image.key === item.title)
-  );
   const carouselRef = useRef<HTMLDivElement>(null);
   const slideOffsetRef = useRef(0);
   const isAnimatingRef = useRef(false);
@@ -272,13 +273,33 @@ const Features = () => {
                 }}
               >
                 {carouselItems.map((image) => (
-                  <div key={image.key} className="group shrink-0 overflow-hidden">
+                  <div
+                    key={image.key}
+                    className="group relative shrink-0 overflow-hidden"
+                  >
                     <img
                       src={image.src}
                       alt={image.alt}
                       className="block h-[800px] w-[400px] max-h-[80vh] max-w-[90vw] transform-gpu object-contain opacity-65 transition duration-300 ease-out group-hover:scale-[1.03] group-hover:opacity-100"
                       loading="lazy"
                     />
+                    <div
+                      className="pointer-events-none absolute translate-y-2 rounded-[18px] opacity-0 transition duration-300 ease-out group-hover:translate-y-0 group-hover:opacity-100"
+                      style={{ inset: "9% 12% 10% 12%" }}
+                    >
+                      <div className="flex h-full w-full items-end overflow-hidden rounded-[18px]">
+                        <div className="w-full bg-gradient-to-t from-black/90 via-black/65 to-black/35 px-4 pb-1 pt-10 sm:px-5 sm:pb-5">
+                          <p
+                            className="text-sm font-semibold text-white/90 sm:text-base"
+                            style={{
+                              textShadow: "0 6px 16px rgba(0, 0, 0, 0.6)",
+                            }}
+                          >
+                            {image.caption}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -286,20 +307,20 @@ const Features = () => {
             <button
               type="button"
               onClick={() => shiftCarousel(-1)}
-              className="absolute left-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border/60 bg-surface/80 text-text shadow-soft transition hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:flex"
+              className="absolute left-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border/60 bg-surface/80 text-text shadow-soft transition hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:h-11 sm:w-11"
               aria-label="Scroll carousel left"
               aria-controls="features-carousel"
             >
-              <Icon name="chevron_left" className="text-[22px]" />
+              <Icon name="chevron_left" className="text-[18px] sm:text-[22px]" />
             </button>
             <button
               type="button"
               onClick={() => shiftCarousel(1)}
-              className="absolute right-3 top-1/2 hidden h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-border/60 bg-surface/80 text-text shadow-soft transition hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:flex"
+              className="absolute right-3 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full border border-border/60 bg-surface/80 text-text shadow-soft transition hover:bg-surface focus-visible:ring-2 focus-visible:ring-accent/40 focus-visible:ring-offset-2 focus-visible:ring-offset-bg sm:h-11 sm:w-11"
               aria-label="Scroll carousel right"
               aria-controls="features-carousel"
             >
-              <Icon name="chevron_right" className="text-[22px]" />
+              <Icon name="chevron_right" className="text-[18px] sm:text-[22px]" />
             </button>
           </div>
         </div>
