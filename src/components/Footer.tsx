@@ -1,5 +1,7 @@
 import { content } from "../data/content";
 
+const logoUrl = new URL("../../statCatLogo2-black.png", import.meta.url).href;
+
 const Footer = () => {
   const year = new Date().getFullYear().toString();
   const copyrightLine = content.footer.copyrightTemplate
@@ -13,8 +15,12 @@ const Footer = () => {
         <div className="grid gap-8 lg:grid-cols-[1.4fr_0.8fr_0.8fr]">
           <div>
             <div className="flex items-center gap-3 font-display text-lg font-semibold">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-xs font-bold text-white">
-                {content.brand.logoMark}
+              <span className="flex h-18 w-18 items-center justify-center rounded-full bg-black">
+                <img
+                  src={logoUrl}
+                  alt={`${content.brand.name} logo`}
+                  className="h-14 w-auto object-contain"
+                />
               </span>
               <span>{content.brand.logoText}</span>
             </div>
@@ -47,7 +53,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-        <div className="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-border/70 pt-6 text-xs text-muted">
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 border-t border-border/70 pt-6 text-xs text-muted">
           <span>
             {copyrightLine}
           </span>
