@@ -3,10 +3,7 @@ import Icon from "./Icon";
 
 const HowItWorks = () => {
   return (
-    <section
-      id="how-it-works"
-      className="section-light star-surface-section py-section"
-    >
+    <section id="how-it-works" className="section-light py-section">
       <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <p className="text-small uppercase tracking-[0.2em] text-muted">
@@ -24,6 +21,7 @@ const HowItWorks = () => {
               style={{ animationDelay: `${index * 120}ms` }}
             >
               <div className="absolute inset-0 bg-gradient-to-br from-slate-900/55 via-slate-800/45 to-slate-900/60" />
+              <div className="star-surface absolute inset-0 opacity-60" />
               <div className="absolute -right-12 -top-16 h-36 w-36 rounded-full bg-primary/18 blur-3xl transition duration-300 ease-out group-hover:bg-primary/28" />
               <div className="absolute -bottom-14 left-10 h-28 w-28 rounded-full bg-accent/18 blur-3xl transition duration-300 ease-out group-hover:bg-accent/28" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-transparent opacity-85 transition duration-300 ease-out md:opacity-75 md:group-hover:opacity-95" />
