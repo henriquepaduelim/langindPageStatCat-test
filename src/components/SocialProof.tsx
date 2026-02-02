@@ -41,10 +41,14 @@ const SocialProof = () => {
                     ? "/media/reportcardsIphone.png"
                     : isAppCard
                       ? "/media/elite1iphoneicone.png"
+                      : metric.value === "Canadian support"
+                        ? "/media/canadaflag.jpg"
                       : null;
               const imageAlt = isAppCard
                 ? "StatCat app icon"
-                : "StatCat mobile app mockup";
+                : metric.value === "Canadian support"
+                  ? "Canadian flag"
+                  : "StatCat mobile app mockup";
               const zoomOriginClass = isAppCard
                 ? "origin-[25%_75%]"
                 : "origin-center";
